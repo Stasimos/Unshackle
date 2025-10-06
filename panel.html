@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unshackle</title>
+  <link rel="stylesheet" href="panel.css" />
+  <!-- Load JSZip for ZIP creation -->
+  <script src="jszip.min.js"></script>
+  <script type="module" src="panel.js"></script>
+</head>
+<body>
+  <div id="app" class="container">
+    <!-- Header with primary actions -->
+    <header class="header">
+      <div class="left-actions">
+        <button id="btnScanAll" class="primary">Scan All</button>
+        <button id="btnNukeOverlays" class="primary">Nuke Overlays</button>
+      </div>
+      <div class="right-actions">
+        <a id="tipLink" class="link" href="#" target="_blank" title="Leave a tip">Tip 💛</a>
+        <a id="contactLink" class="link" href="#" target="_blank" title="Contact us">Contact Us</a>
+        <button id="settingsBtn" class="icon-btn" title="Settings">
+          <span class="material-icon">⚙</span>
+        </button>
+      </div>
+    </header>
+    <!-- Progress bar -->
+    <div id="progressWrap" class="progress-wrap" hidden>
+      <div id="progressBar" class="progress-bar"></div>
+      <span id="progressText" class="progress-text">0%</span>
+    </div>
+    <!-- Toggle controls -->
+    <div class="toggles">
+      <label class="toggle">
+        <span>Auto Scan</span>
+        <input type="checkbox" id="toggleAutoScan" />
+        <span class="slider"></span>
+      </label>
+      <label class="toggle">
+        <span>Auto Canvas</span>
+        <input type="checkbox" id="toggleAutoCanvas" />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <!-- Advanced button -->
+    <button id="btnAdvanced" class="advanced-toggle">Advanced ▸</button>
+    <!-- Advanced drawer -->
+    <section id="advancedSection" class="advanced hide"></section>
+    <!-- Filter controls -->
+    <section class="filters">
+      <h3>Filter</h3>
+      <div class="filter-row">
+        <label>Min W<input type="number" id="filterMinW" min="0" /></label>
+        <label>Min H<input type="number" id="filterMinH" min="0" /></label>
+        <label>Max W<input type="number" id="filterMaxW" min="0" /></label>
+        <label>Max H<input type="number" id="filterMaxH" min="0" /></label>
+      </div>
+      <div class="filter-row">
+        <label>Types
+          <select id="filterTypes" multiple>
+            <option value="jpg" selected>JPG</option>
+            <option value="png" selected>PNG</option>
+            <option value="webp" selected>WEBP</option>
+            <option value="gif">GIF</option>
+            <option value="svg">SVG</option>
+          </select>
+        </label>
+        <button id="btnApplyFilter" class="secondary">Apply</button>
+      </div>
+    </section>
+    <!-- Summary -->
+    <div id="summary" class="summary">No images scanned yet.</div>
+    <!-- Image grid -->
+    <div id="grid" class="grid"></div>
+    <!-- Batch controls -->
+    <section class="batch">
+      <button id="btnAutoSelect" class="secondary">Select All Visible</button>
+      <button id="btnAutoRename" class="secondary">Auto Rename</button>
+      <button id="btnConvert" class="secondary">Convert</button>
+      <button id="btnDownload" class="secondary">Download</button>
+      <button id="btnZip" class="secondary">ZIP</button>
+    </section>
+  </div>
+</body>
+</html>
